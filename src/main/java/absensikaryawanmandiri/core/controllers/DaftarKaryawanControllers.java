@@ -1,19 +1,18 @@
 package absensikaryawanmandiri.core.controllers;
 
 import absensikaryawanmandiri.core.models.entity.daftar_karyawan;
-import absensikaryawanmandiri.core.services.AbsensiKaryawanServices;
 import absensikaryawanmandiri.core.services.DaftarKaryawanServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+
 
 @Controller
 @RequestMapping("")
-public class HomeControllers {
+public class DaftarKaryawanControllers {
 
     @Autowired
     private DaftarKaryawanServices daftarKaryawanServices;
@@ -34,9 +33,33 @@ public class HomeControllers {
     }
 
     @PostMapping("/save")
-    public  String save(daftar_karyawan addPegawai){
-        daftarKaryawanServices.addKaryawan(addPegawai);
-        return "redirect:/";
+    public String save(@ModelAttribute daftar_karyawan addPegawai, RedirectAttributes redirAttrs){
+
+//        boolean nip = daftarKaryawanServices.checkNip(addPegawai.getNip());
+//        if(nip){
+//            redirAttrs.addFlashAttribute("ErrorNip", "NIP Already Exist");
+//        } else {
+//            daftar_karyawan daftar_karyawans = daftarKaryawanServices.addKaryawan(addPegawai);
+//            if(daftar_karyawans != null){
+//                redirAttrs.addFlashAttribute("Success", "Register Successfully");
+////            System.out.println("Register Successfully");
+//            } else {
+//                redirAttrs.addFlashAttribute("Error", "Failed to Register please try again");
+////            System.out.println("Failed to Register please try again");
+//            }
+//        }
+        
+        daftar_karyawan daftar_karyawans = daftarKaryawanServices.addKaryawan(addPegawai);
+        if(daftar_karyawans != null){
+            redirAttrs.addFlashAttribute("Success", "Register Successfully");
+//            System.out.println("Register Successfully");
+        } else {
+            redirAttrs.addFlashAttribute("Error", "Failed to Register please try again");
+//            System.out.println("Failed to Register please try again");
+        }
+
+//        return "redirect:/";
+        return "redirect:/add";
     }
 
     @GetMapping("/delete/{id}")

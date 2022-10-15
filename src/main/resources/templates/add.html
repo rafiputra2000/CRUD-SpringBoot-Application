@@ -10,6 +10,8 @@
 <body>
 <div class="container mt-3">
     <h2>Add New Member</h2>
+    <div class="alert alert-primary" role="alert" th:text="${Success}" th:if="${Success}"></div>
+    <div class="alert alert-primary" role="alert" th:text="${Error}" th:if="${Error}"></div>
     <form th:object="${addKaryawan}" method="post" th:action="@{/save}">
         <div class="form-group">
             <label>NIP</label>

@@ -20,11 +20,6 @@ public class AbsensiKaryawanServices {
         return absensiKaryawanRepository.findAll();
     }
 
-//    @Override
-//    public absensi_karyawan save(absensi_karyawan absensi_karyawans){
-//        absensi_karyawan Absensi_Karyawan new absensi_karyawan(absensi_karyawans.getNip())
-//    }
-
     public void addAbsensi(absensi_karyawan addAbsensi){
         absensiKaryawanRepository.save(addAbsensi);
     }

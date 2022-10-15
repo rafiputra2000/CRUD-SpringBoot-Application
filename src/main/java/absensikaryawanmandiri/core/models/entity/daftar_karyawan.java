@@ -1,5 +1,6 @@
 package absensikaryawanmandiri.core.models.entity;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,6 +9,7 @@ import java.util.List;
 
 @Getter
 @Setter
+//@Data
 @Entity
 @Table(name = "tbl_karyawan")
 public class daftar_karyawan {

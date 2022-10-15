@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -21,8 +20,9 @@ public class DaftarKaryawanServices{
         return repositoryDaftar.findAll();
     }
 
-    public void addKaryawan(daftar_karyawan addkaryawan){
+    public daftar_karyawan addKaryawan(daftar_karyawan addkaryawan){
         repositoryDaftar.save(addkaryawan);
+        return addkaryawan;
     }
 
     public void deleteKaryawanById(long id){
@@ -36,4 +36,8 @@ public class DaftarKaryawanServices{
     public void updateKaryawan(daftar_karyawan updateKaryawan){
         repositoryDaftar.save(updateKaryawan);
     }
+
+//    public boolean checkNip(String nip){
+//        return repositoryDaftar.existNip(nip);
+//    }
 }
